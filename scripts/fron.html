@@ -1,0 +1,242 @@
+<html>
+
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Controle de Pagamentos de Comissões</title>
+
+    <style>
+
+        body 
+            {
+            font-family: serif; /* Fonte moderna e legível */
+            background-color: #db9c9c; /* Cor de fundo suave */
+            color: #000000; /* Cor do texto */
+            padding: 60; /* Espaçamento ao redor da página */
+            }
+
+        .container 
+            {
+            max-width: 1200px; /* Largura máxima para telas grandes */
+            background: #ffffffff; /* Fundo branco com leve transparência */
+            border-radius: 15px; /* Bordas arredondadas */
+            padding: 100px; /* Espaçamento interno */
+            }
+
+        h1 
+            {
+            text-align: center;
+            color: #4a4a4a;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            }
+
+        p 
+            {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            }
+
+        form 
+            {
+            display: grid ; /* Usa grid layout para o formulário */
+            grid-template-columns: 1fr 1fr; /* 2 colunas iguais */
+            gap: 30px; /* Espaçamento entre os campos */
+            margin-bottom: 30px; /* Espaçamento abaixo do formulário */
+            background: #f5f1f1; /* Fundo claro para o formulário */
+            padding: 30px; /* Espaçamento interno */
+            border-radius: 10px; /* Bordas arredondadas */
+            }
+
+        label
+            {
+            font-weight: bold; /* Negrito para os labels */
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+            }
+
+        input, select 
+            {
+            padding: 12px;
+            border: solid #c28383;
+            border-radius:10px;
+            width: 100%;
+            }
+            
+        input:focus, select:focus 
+            {
+            border-color: #861235;
+            outline: none; /* Remove o contorno padrão */
+            }
+
+        button 
+            {
+            padding: 15px 30px;
+            background: #c28383;
+            color: rgb(141, 63, 63);
+            border: none; /* Remove a borda padrão */
+            border-radius: 10px;
+            cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+            font-size: 1.1em; 
+            font-weight: bold; 
+            transition: transform 0.2s, box-shadow 0.2s; /* Animação suave */
+            grid-column: span 2; /* Botão ocupa as duas colunas */
+            justify-self: center; /* Centraliza o botão */
+            }
+
+        button:hover 
+            {
+            transform: translateY(-2px); /* Leve elevação ao passar o mouse */
+            box-shadow: 0 5px 15px #00000033; /* Sombra ao passar o mouse */
+            }
+
+        h2 
+            {
+            color: #4a4a4a;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 2em;
+            }
+
+        table 
+            {
+            width: 100%; 
+            border-collapse: collapse; /* Remove espaços entre células */
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden; /* Garante que as bordas arredondadas funcionem */
+            }
+
+        th, td 
+            {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #854242; /* Borda inferior */
+            }
+
+        th 
+            {
+            background:#daacac;
+            color: rgb(17, 5, 5);
+            font-weight: bold; 
+            }
+
+        tr:hover
+            {
+            background: #e0e8ee;
+            }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Controle de Pagamentos de Comissões</h1>
+        <p>Registre e Controle as Suas Comissões :) </p>
+
+    <form id="cform"> 
+
+            <div>
+                <label for="vendedor"> Nome do Vendedor/Representante:</label>
+                <input type="text" id="vendedor" required>
+            </div>
+
+            <div>
+                <label for="valor"> Valor da Comissão (R$):</label>
+                <input type="number" id="valor" step="10.0" required>
+            </div>
+
+            <div>
+                <label for="data"> Data do Pagamento:</label>
+                <input type="date" id="data" required>
+            </div>
+
+            <div>
+                <label for="meta">A Meta de Vendas Foi Atingida? </label>
+                <input type="text" id="meta" placeholder="Ex: 100% ou Sim" required>
+            </div>
+
+            <button type="submit"> Registrar Comissão </button>
+
+    </form>
+
+        <h2>Comissões Registradas</h2>
+
+        <table id="ctable">
+
+            <thead>
+
+                <tr>
+                    <th>Nome do Vendedor</th>
+                    <th>Valor (R$)</th>
+                    <th>Data</th>
+                    <th>Meta Atingida</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+                <!-- Dados de exemplo -->
+
+                <tr>
+                    <td>João Silva</td>
+                    <td>500.00</td>
+                    <td>2023-10-01</td>
+                    <td>Sim (120%)</td>
+                </tr>
+
+                <tr>
+                    <td>Maria Oliveira</td>
+                    <td>750.00</td>
+                    <td>2023-10-05</td>
+                    <td>Sim (110%)</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script>
+
+        document.getElementById('cform').addEventListener 
+        ('submit', function(event) 
+            {
+            event.preventDefault();
+            
+            const vendedor = document.getElementById('vendedor').value; //pega os valores do formulario
+            const valor = document.getElementById('valor').value;
+            const data = document.getElementById('data').value;
+            const meta = document.getElementById('meta').value;
+            
+            const table = document.getElementById('ctable').getElementsByTagName('tbody')[0]; //pega a tabela
+            const newRow = table.insertRow(); //insere uma nova linha na tabela
+            
+            newRow.insertCell(0).textContent = vendedor; //insere os valores nas celulas
+            newRow.insertCell(1).textContent = parseFloat(valor).toFixed(2); //formata o valor com 2 casas decimais
+            newRow.insertCell(2).textContent = data;
+            newRow.insertCell(3).textContent = meta;
+            
+            // Limpar formulário
+            document.getElementById('cform').reset();
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
