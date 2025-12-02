@@ -215,7 +215,7 @@
         document.getElementById('cform').addEventListener 
         ('submit', function(event) 
             {
-            event.preventDefault();
+            event.preventDefault(); // Impede o envio padrão do formulário
             
             const vendedor = document.getElementById('vendedor').value; //pega os valores do formulario
             const valor = document.getElementById('valor').value;
