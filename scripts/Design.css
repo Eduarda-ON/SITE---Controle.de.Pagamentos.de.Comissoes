@@ -122,4 +122,12 @@
             background: #e0e8ee;
             }
 
+        @media (max-width: 768px) /* Estilos para telas menores que 768px */
+            {
+            form 
+                {
+                grid-template-columns: 1fr; /* Muda para uma coluna em telas pequenas */
+                }      
+            }
+
     
